@@ -1,28 +1,18 @@
-/*1. Zona Importaciones*/
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Image } from 'react-native';
-import {Saludo} from './components/Saludo'
-import {Saludo2} from './components/Saludo2'
-
-/*2. Zona Render o main*/
-export default function App() {
+import { StyleSheet, Text, View , Image, requireNativeComponent} from 'react-native';
+import {Perfil} from './components/Perfil';
+export default function App() { 
   return (
     <View style={styles.container}>
-      <Text>Hola Mundo React Native</Text>
-      <Image source={require('./assets/manita.png')}></Image>
+      <Perfil nombre= "Lulu" carrera="ITIID" materia="Movil" cuatri="4to"/>
+      <Perfil nombre= "Renata" carrera="ITIID" materia="Movil" cuatri="4to"/>
+      <Perfil nombre= "Luisa" carrera="ITIID" materia="Movil" cuatri="4to"/>   
 
-        <Text> _________________________ </Text>
-        <Saludo></Saludo>
-        <Saludo/>
-
-        <Text> _________________________ </Text>
-        <Saludo2></Saludo2>
-        <Saludo2/>
-      <StatusBar style="auto" />
+      <StatusBar style="auto"></StatusBar>
     </View>
+
   );
 }
-/*3. Zona estilos y posicionamiento*/
 const styles = StyleSheet.create({
   container: {
     flex: 1,
