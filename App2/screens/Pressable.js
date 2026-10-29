@@ -1,0 +1,77 @@
+import { StyleSheet, View,Text,Pressable,Switch} from 'react-native';
+import {useState} from 'react';
+
+
+export default function PressableScreen() { 
+  const [mensaje, setMensaje] = useState('Presiona el boton');
+  const [activado, setActivado] = useState(false);
+  return (
+    <View style={styles.container}>
+      <Text style = {styles.titulo}>Pressable</Text>
+        <Text>Mnesaje</Text>
+        <Pressable onPress={()=> setMensaje('Boton presionado')}
+          onPressIn={()=>console.log('inicio de pulsacion') }
+          onPressOut={()=>console.log('fin de la pulsacion')}
+          onLongPress={()=>setMensaje('pulsacion prolongada')}
+          disabled = {false}
+          style = {({pressed})=>[
+            styles.boton,
+            pressed && styles.botonPresionado
+          ]}>
+            <Text style = {styles.textoBoton}>Presioname</Text>
+          
+        </Pressable>
+        <View style = {styles.separador}>
+          <Text style = {styles.titulo}>Switch</Text>
+
+          <Text>
+            Estado: {activado ?'Activado': 'Desactivado'}
+          </Text>
+
+          <Switch
+          value={activado}
+          onValueChange={setActivado}
+          disable={false}
+          trackcolor={{ false: 'red', true: 'yellow' }}
+          thumbColor={activado ? 'white' : 'blue'}></Switch>
+        </View>
+    </View>
+  );
+}
+
+
+//poner color a cada tarjeta
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    width: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 20,
+    backgroundColor: '#f2f2f2',
+  },
+  titulo: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    marginBottom: 15,
+  },
+  boton: {
+    backgroundColor: '#319b80',
+    padding: 15,
+    borderRadius: 10,
+    marginTop: 15,
+  },
+  botonPresionado: {
+    backgroundColor: '#1e6655',
+  },
+  textoBoton: {
+    color: 'white',
+    fontSize: 16,
+  },
+  separador: {
+    height: 2,
+    backgroundColor: '#cccccc',
+    width: '90%',
+    marginVertical: 35,
+  },
+});
